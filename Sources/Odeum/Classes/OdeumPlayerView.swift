@@ -267,7 +267,7 @@ public class OdeumPlayerView: UIView {
         )
     }
     
-    func showControl() {
+    public func showControl() {
         UIView.animate(
             withDuration: 0.45,
             delay: 0,
@@ -280,7 +280,7 @@ public class OdeumPlayerView: UIView {
         )
     }
     
-    func hideControl() {
+    public func hideControl() {
         UIView.animate(
             withDuration: 0.45,
             delay: 0,
