@@ -16,7 +16,7 @@ import AVKit
 public class OdeumPlayerView: UIView {
     
     // MARK: View
-    
+    var isControllerShown = false
     public internal(set) lazy var progressBar: UISlider = {
         let bar = UISlider()
         bar.thumbTintColor = .white
@@ -268,6 +268,7 @@ public class OdeumPlayerView: UIView {
     }
     
     public func showControl() {
+        isControllerShown = true
         UIView.animate(
             withDuration: 0.45,
             delay: 0,
@@ -281,6 +282,7 @@ public class OdeumPlayerView: UIView {
     }
     
     public func hideControl() {
+        isControllerShown = false
         UIView.animate(
             withDuration: 0.45,
             delay: 0,

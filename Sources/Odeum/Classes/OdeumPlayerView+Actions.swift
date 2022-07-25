@@ -26,13 +26,17 @@ extension OdeumPlayerView {
     }
     
     @objc func didTap(_ sender: Any?) {
-        showControl()
-        hideWorker?.cancel()
-        let newWorker = DispatchWorkItem { [weak self] in
-            self?.hideControl()
+        if isControllerShown {
+            hideControl()
+        }else {
+            showControl()
+            hideWorker?.cancel()
+            let newWorker = DispatchWorkItem { [weak self] in
+                self?.hideControl()
+            }
+            hideWorker = newWorker
+            DispatchQueue.main.asyncAfter(deadline: .now() + videoControlShownTimeInterval, execute: newWorker)
         }
-        hideWorker = newWorker
-        DispatchQueue.main.asyncAfter(deadline: .now() + videoControlShownTimeInterval, execute: newWorker)
     }
     
     func timeTracked(_ time: CMTime) {
